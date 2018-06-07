@@ -1,0 +1,202 @@
+[
+    {
+        "naziv": "The Beatles",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Beatles_ad_1965_just_the_beatles_crop.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 3,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 1
+    },
+    {
+        "naziv": "Led Zeppelin",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/5/5f/Led_Zeppelin_-_Led_Zeppelin_III.png",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 4,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 2
+    },
+    {
+        "naziv": "The Rolling Stones",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Stones_ad_1965.JPG",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 2,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 3
+    },
+    {
+        "naziv": "Pink Floyd",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 5,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 4
+    },
+    {
+        "naziv": "AC/DC",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/1/17/ACDC-TNT.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 5,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 5
+    },
+    {
+        "naziv": "Black Sabbath",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/6/64/Black_Sabbath_-_Paranoid.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 4,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 6
+    },
+    {
+        "naziv": "The Who",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/0/01/My-Generation--2.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 4,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 7
+    },
+    {
+        "naziv": "Aerosmith",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/8/83/Toxic_Twins.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 3,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 8
+    },
+    {
+        "naziv": "Metallica",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/5/5c/Metallica_-_Kill_%27Em_All_cover.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 2,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 9
+    },
+    {
+        "naziv": "The Eagles",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/0/00/Eagles.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 3,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 10
+    },
+    {
+        "naziv": "The Cult",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Cult_%28Black_Sheep%29_cover.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 4,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 11
+    },
+    {
+        "naziv": "Fleetwood Mac",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/e/ee/Fleetwood_Mac_1990.JPG",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 1,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 12
+    },
+    {
+        "naziv": "Deep Purple",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Deep_Purple_%281968%29.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 5,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 13
+    },
+    {
+        "naziv": "Pearl Jam",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/2/2d/PearlJam-Ten2.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 4,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 14
+    },
+    {
+        "naziv": "The Beach Boys",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/1/19/Sullivan_Beach_Boys.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 3,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 15
+    },
+    {
+        "naziv": "Ramones",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/5/57/Ramones_logo.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 3,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 16
+    },
+    {
+        "naziv": "Iron Maiden",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/0/01/Iron_Maiden_-_Iron_Maiden.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 5,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 17
+    },
+    {
+        "naziv": "The Clash",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/0/00/TheClashLondonCallingalbumcover.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 1,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 18
+    },
+    {
+        "naziv": "Dire Straits",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/6/67/DS_Brothers_in_Arms.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 3,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 19
+    },
+    {
+        "naziv": "Genesis",
+        "kategorija": "Rock",
+        "img": "https://upload.wikimedia.org/wikipedia/en/0/03/Genesis_-_We_Can%27t_Dance.jpg",
+        "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
+        "ocena": 4,
+        "kolicina": 47,
+        "cena": 257.55,
+        "id": 20
+    }
+]

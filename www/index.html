@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset = "UTF-8" name = "viewport" content = "width=device-width, initial-scale=1" />
+		<link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css"/>
+		<link rel = "stylesheet" type = "text/css" href = "css/style.css"/>
+		<title>HCI - Singidunum</title>
+	</head>
+	<body ng-app = "myModule" ng-controller = "myController">
+		<nav class = "navbar navbar-default navbar-fixed-top">
+			<div class = "container-fluid">
+					<ul class="nav navbar-nav">
+						<li><a href="#" ng-click="myController.login()">Login</a></li>
+						<li><div class="pull-right">
+								<form class="navbar-form" role="search">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Pretraga" ng-model="vm.searchText">
+											<div class="input-group-btn">
+												<button class="btn btn-default btn-search" type="submit" ng-click="vm.init()"><i class="glyphicon glyphicon-search"></i></button>
+											</div>
+									</div>
+								</form>
+							</div>
+						</li>
+			</div>
+			
+		</nav>
+	<div class = "col-md-3">
+		<div class="col-md-8">
+				<div class="list-group">
+						<a ng-repeat="el in myController.listaKategorija"
+							href="#" ng-click="myController.filterKategorije(el)" class="list-group-item">{{el}}</a>
+				</div>
+				<div class="list-group">
+						<a href="#" ng-click="myController.filterOcene(-1)"
+								ng-class="{'aktivan':vm.ocena==-1}"
+								class="list-group-item">Svi proizvodi</a>
+						<a ng-repeat="el in [1, 2, 3, 4, 5]"
+
+							href="#" ng-click="myController.filterOcene(el)" class="list-group-item"
+							ng-class="{'aktivan':vm.ocena==el}">Ocena {{el}}</a>
+				</div>
+				<div class="list-group">
+						<a href="#" ng-click="myController.filterCena(-1)"
+								ng-class="{'aktivan':vm.cena==-1}"
+								class="list-group-item">Sve cene</a>
+
+						<a href="#" ng-click="myController.filterCena(1)"
+								ng-class="{'aktivan':vm.cena==1}"
+								class="list-group-item">Cene od 0 do 200</a>
+
+						<a href="#" ng-click="myController.filterCena(2)"
+								ng-class="{'aktivan':vm.cena==2}"
+								class="list-group-item">Cene vece od 200</a>
+				</div>
+				<div class="list-group">
+						<a href="#" ng-click="myController.filterKolicine(-1)"
+								ng-class="{'aktivan':vm.kolicina==-1}"
+								class="list-group-item">Sve Kolicine</a>
+
+						<a href="#" ng-click="myController.filterKolicine(1)"
+								ng-class="{'aktivan':vm.kolicina==1}"
+								class="list-group-item">Kolicine od 0 do 5</a>
+
+						<a href="#" ng-click="myController.filterKolicine(2)"
+								ng-class="{'aktivan':vm.kolicina==2}"
+								class="list-group-item">Kolicine vece od 5</a>
+				</div>
+		<div style = "position:fixed; top:50px; right:0px; z-index:1;">
+			<div class = "panel panel-primary">
+				<div class = "panel-heading">
+					<h5>MY CART</h5>
+				</div>
+				<div class = "panel-body table-responsive">
+					<table class = "table">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th>Price</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat = "cart in carts" ng-init = "setTotals(cart)">
+								<td>{{cart.p_name}}</td>
+								<td>₱{{cart.p_price}}</td>
+								<td><button type = "button" ng-click = "remove_cart(cart)" class = "btn btn-danger"><span class = "glyphicon glyphicon-remove"></span></button></td>
+							</tr>
+							<tr>
+								<td align = "right">Total</td>
+								<td>₱{{total}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class = "col-sm-10">
+		<div id = "bg-background" class = "col-md-8">
+			<h4>Events<h4>
+			<hr style = "border-top:1px groovy #ccc;">
+			<div id = "product">
+				<div id = "p_list" ng-repeat = "product in products">
+					<h5>{{product.p_name}}</h5>
+					<center><img ng-src = "{{product.p_image}}"/></center>
+					<div><label>Price: ₱{{product.p_price}}</label></div>
+					<center><button type = "button" ng-click = "add_cart(product)"><span class = "glyphicon glyphicon-shopping-cart"></span> Add to cart</button></center>
+				</div>
+			</div>
+			<ul uib-pagination direction-links="true"
+                total-items="myController.totalItems"
+                ng-model="myController.currentPage"
+                max-size="myController.maxSize"
+                class="pagination-sm"
+                boundary-links="true"
+                num-pages="vm.smallnumPages"></ul>
+		</div>
+		
+			<script src = "js/angular.js"></script>
+			<script src = "js/app.js"></script>
+			<script src="bower_components/jquery/dist/jquery.min.js"></script>
+			<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+			<script src="bower_components/angular/angular.min.js"></script>
+			<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+			<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	</div>
+</body>
+</html>
