@@ -6,7 +6,7 @@
 		<link rel = "stylesheet" type = "text/css" href = "css/style.css"/>
 		<title>HCI - Singidunum</title>
 	</head>
-	<body ng-app = "myModule" ng-controller = "myController">
+	<body ng-app="myModule" ng-controller="myCtrl as myController">
 		<nav class = "navbar navbar-default navbar-fixed-top">
 			<div class = "container-fluid">
 					<ul class="nav navbar-nav">
@@ -22,8 +22,9 @@
 								</form>
 							</div>
 						</li>
+						<li><a href="#" ng-click="myController.logout()">Logout</a></li>
 			</div>
-			
+
 		</nav>
 	<div class = "col-md-3">
 		<div class="col-md-8">
@@ -41,15 +42,15 @@
 							ng-class="{'aktivan':vm.ocena==el}">Ocena {{el}}</a>
 				</div>
 				<div class="list-group">
-						<a href="#" ng-click="myController.filterCena(-1)"
+						<a href="#" ng-click="myController.filterCena()"
 								ng-class="{'aktivan':vm.cena==-1}"
 								class="list-group-item">Sve cene</a>
 
-						<a href="#" ng-click="myController.filterCena(1)"
+						<a href="#" ng-click="myController.filterCena()"
 								ng-class="{'aktivan':vm.cena==1}"
 								class="list-group-item">Cene od 0 do 200</a>
 
-						<a href="#" ng-click="myController.filterCena(2)"
+						<a href="#" ng-click="myController.filterCena()"
 								ng-class="{'aktivan':vm.cena==2}"
 								class="list-group-item">Cene vece od 200</a>
 				</div>
@@ -99,25 +100,25 @@
 	</div>
 	<div class = "col-sm-10">
 		<div id = "bg-background" class = "col-md-8">
-			<h4>Events<h4>
-			<hr style = "border-top:1px groovy #ccc;">
-			<div id = "product">
-				<div id = "p_list" ng-repeat = "product in products">
-					<h5>{{product.p_name}}</h5>
-					<center><img ng-src = "{{product.p_image}}"/></center>
-					<div><label>Price: ₱{{product.p_price}}</label></div>
-					<center><button type = "button" ng-click = "add_cart(product)"><span class = "glyphicon glyphicon-shopping-cart"></span> Add to cart</button></center>
-				</div>
-			</div>
-			<ul uib-pagination direction-links="true"
+				<h4>Events<h4>
+					<hr style = "border-top:1px groovy #ccc;">
+						<div id = "product">
+							<div id = "p_list" ng-repeat = "product in products">
+								<h5>{{product.p_name}}</h5>
+									<center><img ng-src = "{{product.p_image}}"/></center>
+										<div><label>Price: ₱{{product.p_price}}</label></div>
+										<center><button type = "button" ng-click = "add_cart(product)"><span class = "glyphicon glyphicon-shopping-cart"></span> Add to cart</button></center>
+							</div>
+						</div>
+							<ul uib-pagination direction-links="true"
                 total-items="myController.totalItems"
                 ng-model="myController.currentPage"
                 max-size="myController.maxSize"
                 class="pagination-sm"
                 boundary-links="true"
-                num-pages="vm.smallnumPages"></ul>
+                num-pages="vm.smallnumPages">
+							</ul>
 		</div>
-		
 			<script src = "js/angular.js"></script>
 			<script src = "js/app.js"></script>
 			<script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -125,6 +126,45 @@
 			<script src="bower_components/angular/angular.min.js"></script>
 			<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 			<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+			<!---LOGIN---->
+			<script type="text/ng-template" id="myModalContent.html">
+					<div class="modal-header">
+						<h3 class="modal-title" id="modal-title" ng-if="$ctrl.stanje == 'Login'">Login</h3>
+						<h3 class="modal-title" id="modal-title" ng-if="$ctrl.stanje == 'Registracija'">Registracija</h3>
+					</div>
+					<div class="modal-body" id="modal-body">
+						<section class="login-form" ng-if="$ctrl.stanje == 'Login'">
+								<form class="form-signin">
+										<input type="text" placeholder="Korisnicko ime" required
+											class="form-control input-lg" ng-model="$ctrl.username" />
+										<input type="password" class="form-control input-lg"
+											placeholder="Password" required ng-model="$ctrl.password" />
+										<button class="btn btn-lg btn-primary btn-block" ng-click="$ctrl.login()">Login</button>
+										<div>
+												<a href="#" ng-click="$ctrl.stanje='Registracija';">Create account</a>
+										</div>
+								</form>
+						</section>
+						<section class="login-form" ng-if="$ctrl.stanje == 'Registracija'">
+								<form class="form-signin">
+										<input type="text" placeholder="Korisnicko ime" required
+											class="form-control input-lg" ng-model="$ctrl.username" />
+										<input type="password" class="form-control input-lg"
+											placeholder="Password" required ng-model="$ctrl.password" />
+										<input type="password" class="form-control input-lg"
+											placeholder="Confirm password" required ng-model="$ctrl.confirmPassword" />
+										<button class="btn btn-lg btn-primary btn-block" ng-click="$ctrl.register()">Registracija</button>
+										<div>
+												<a href="#" ng-click="$ctrl.stanje='Login';">Sign in</a>
+										</div>
+								</form>
+						</section>
+					</div>
+					<div class="modal-footer">
+							<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+					</div>
+			</script>
+			<!---/LOGIN--->
 	</div>
 </body>
 </html>
