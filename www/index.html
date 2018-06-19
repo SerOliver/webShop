@@ -11,19 +11,19 @@
 		<nav class = "navbar navbar-default navbar-fixed-top">
 			<div class = "container-fluid">
 					<ul class="nav navbar-nav">
-						<li><a href="#" ng-click="myController.login()">Login</a></li>
-						<li><div class="pull-right">
+						<li ng-if="!myController.korisnikPrijavljenUser || !myController.korisnikPrijavljenAdmin"><a href="#" ng-click="myController.login()">Login</a></li>
+						<li ng-if="myController.korisnikPrijavljenUser || myController.korisnikPrijavljenAdmin"><a href="#" ng-click="myController.korisnikPrijavljenUser = false; myController.korisnikPrijavljenAdmin = false; myController.logout()">Log out</a></li>
+						<li ><div class="pull-right">
 								<form class="navbar-form" role="search">
 									<div class="input-group">
 										<input type="text" class="form-control" placeholder="Pretraga" ng-model="myController.searchText">
 											<div class="input-group-btn">
-												<button class="btn btn-default btn-search" type="submit" ng-click="vm.init()"><i class="glyphicon glyphicon-search"></i></button>
+												<button class="btn btn-default btn-search" type="submit" ng-click="myController.init()"><i class="glyphicon glyphicon-search"></i></button>
 											</div>
 									</div>
 								</form>
 							</div>
 						</li>
-						<li><a href="#" ng-click="myController.logout()">Logout</a></li>
 						<li><a>{{myController.message}}</a></li>
 					</ul>
 			</div>
@@ -31,43 +31,39 @@
 	</div>
 	<div class = "col-md-2">
 				<div class="list-group">
-						<a ng-repeat="el in myController.listaKategorija"
-							href="#" ng-click="myController.filterKategorije(el)" class="list-group-item">{{el}}</a>
+					<a href="#" ng-click="myController.filterOcene(-1)"
+							ng-class="{'aktivan':myController.p_grade==-1}"
+							class="list-group-item">Svi proizvodi</a>
+							<a ng-repeat="el in [1, 2, 3, 4, 5]"
+
+								href="#" ng-click="myController.filterOcene(el)" class="list-group-item"
+								ng-class="{'aktivan':myController.p_grade==el}">Ocena {{el}}</a>
 				</div>
 				<div class="list-group">
-						<a href="#" ng-click="myController.filterOcene(-1)"
-								ng-class="{'aktivan':myController.ocena==-1}"
-								class="list-group-item">Svi proizvodi</a>
-						<a ng-repeat="el in [1, 2, 3, 4, 5]"
+					<a href="#" ng-click="myController.filterCena(-1)"
+							ng-class="{'aktivan':myController.p_price==-1}"
+							class="list-group-item">Sve cene</a>
 
-							href="#" ng-click="myController.filterOcene(el)" class="list-group-item"
-							ng-class="{'aktivan':myController.ocena==el}">Ocena {{el}}</a>
+					<a href="#" ng-click="myController.filterCena(1)"
+							ng-class="{'aktivan':myController.p_price==1}"
+							class="list-group-item">Cene od 0 do 40</a>
+
+					<a href="#" ng-click="myController.filterCena(2)"
+							ng-class="{'aktivan':myController.p_price==2}"
+							class="list-group-item">Cene vece od 40</a>
 				</div>
 				<div class="list-group">
-						<a href="#" ng-click="myController.filterCena()"
-								ng-class="{'aktivan':myController.cena==-1}"
-								class="list-group-item">Sve cene</a>
+					<a href="#" ng-click="myController.filterKolicine(-1)"
+							ng-class="{'aktivan':myController.kolicina==-1}"
+							class="list-group-item">Sve Kolicine</a>
 
-						<a href="#" ng-click="myController.filterCena()"
-								ng-class="{'aktivan':myController.cena==1}"
-								class="list-group-item">Cene od 0 do 30</a>
+					<a href="#" ng-click="myController.filterKolicine(1)"
+							ng-class="{'aktivan':myController.kolicina==1}"
+							class="list-group-item">Kolicine od 0 do 25</a>
 
-						<a href="#" ng-click="myController.filterCena()"
-								ng-class="{'aktivan':myController.cena==2}"
-								class="list-group-item">Cene vece od 30</a>
-				</div>
-				<div class="list-group">
-						<a href="#" ng-click="myController.filterKolicine(-1)"
-								ng-class="{'aktivan':myController.kolicina==-1}"
-								class="list-group-item">Sve Kolicine</a>
-
-						<a href="#" ng-click="myController.filterKolicine(1)"
-								ng-class="{'aktivan':myController.kolicina==1}"
-								class="list-group-item">Kolicine od 0 do 5</a>
-
-						<a href="#" ng-click="myController.filterKolicine(2)"
-								ng-class="{'aktivan':myController.kolicina==2}"
-								class="list-group-item">Kolicine vece od 5</a>
+					<a href="#" ng-click="myController.filterKolicine(2)"
+							ng-class="{'aktivan':myController.kolicina==2}"
+							class="list-group-item">Kolicine vece od 25</a>
 				</div>
 		<div style = "position:fixed; top:50px; right:0px; z-index:1;">
 			<div class = "panel panel-primary">
@@ -108,12 +104,20 @@
 					<hr style = "border-top:1px groovy #ccc;">
 						<div id = "product">
 							<div id = "p_list" ng-repeat = "proizvod in myController.proizvodi.slice(((myController.currentPage-1)*myController.itemsPerPage), ((myController.currentPage)*myController.itemsPerPage))">
-								<h5>{{proizvod.p_name}}</h5>
+								<h5>{{proizvod.p_name}} Ocena: {{proizvod.p_grade}}</h5>
 									<center><img ng-src = "{{proizvod.p_image}}"/></center>
-										<div><label>Price: €{{proizvod.p_price}}</label></div>
+										<div><label>Price: €{{proizvod.p_price}}</label>
+											<div>
+												<p ng-if="myController.korisnikPrijavljenUser"></p>
+											</div>
+											<div>
+												<p ng-if="myController.korisnikPrijavljenAdmin"><input style="width:100px;" ng-model="proizvod.p_price" type="number" /></p>
+											</div>
+										</div>
 										<center><button type = "button" ng-click = "add_cart(proizvod)"><span class = "glyphicon glyphicon-shopping-cart"></span> Add to cart</button></center>
 							</div>
 						</div>
+						<!-- OVAJ DEO JE ZA LISTANJE STR IZBACEN
 						<div style="text-align:center;" ng-if="myController.proizvod==null">
 							<ul uib-pagination direction-links="true"
 								total-items="myController.totalItems"
@@ -124,6 +128,7 @@
 								num-pages="myController.smallnumPages">
 							</ul>
 						</div>
+						-->
 					</hr>
 		</div>
 			<script src = "js/angular.js"></script>

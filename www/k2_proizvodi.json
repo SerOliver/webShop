@@ -160,7 +160,7 @@
         "p_id": 16
     },
     {
-        "p_name": "Iron Map_iden",
+        "p_name": "Iron Maiden",
         "kategorija": "Rock",
         "p_image": "https://upload.wikimedia.org/wikipedia/en/7/7c/Iron_Maiden_%28album%29_cover.jpg",
         "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus p_id turpis integer aliquet massa p_id lobortis convallis tortor risus dapibus augue vel",
@@ -196,7 +196,7 @@
         "opis": "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus p_id turpis integer aliquet massa p_id lobortis convallis tortor risus dapibus augue vel",
         "p_grade": 4,
         "kolicina": 20,
-        "p_price": 40,
+        "p_price": 50,
         "p_id": 20
     }
 ]

@@ -11,21 +11,11 @@ var app = angular.module("myModule", ['ui.bootstrap']);
 
 				$scope.carts=[];
 				$window.message = "";
-				/*
-				$scope.proizvods = [
-					{p_id: "1", p_name: "The Beatles", p_image: "images/1.jpg", p_price: 350, p_grade: 3},
-					{p_id: "2", p_name: "Led Zeppelin", p_image: "images/2.png", p_price: 450, p_grade: 4},
-					{p_id: "3", p_name: "The Rolling Stones", p_image: "images/3.png", p_price: 350, p_grade: 2},
-					{p_id: "4", p_name: "Pink Floyd", p_image: "images/4.png", p_price: 400, p_grade: 5},
-					{p_id: "5", p_name: "AC/DC", p_image: "images/5.png", p_price: 300, p_grade: 4},
-					{p_id: "6", p_name: "The Who", p_image: "images/6.png", p_price: 350, p_grade: 4},
-					{p_id: "7", p_name: "The Who", p_image: "images/6.png", p_price: 350, p_grade: 3},
-					{p_id: "8", p_name: "The Who", p_image: "images/6.png", p_price: 350, p_grade: 3},
-					{p_id: "9", p_name: "The Who", p_image: "images/6.png", p_price: 350, p_grade: 5},
-					{p_id: "10", p_name: "The Who", p_image: "images/6.png", p_price: 350, p_grade: 2},
-					{p_id: "11", p_name: "The Who", p_image: "images/6.png", p_price: 350, p_grade: 1}
-				];
-				*/
+
+
+				//==== LOAD INIT PRODUCTS =====//
+				//============================//
+
 				myController.init = function(){
 				  var req = {
 					  method: "GET",
@@ -41,13 +31,13 @@ var app = angular.module("myModule", ['ui.bootstrap']);
 						for(var i in myController.svi_proizvodi){
 						  var proizvod = myController.svi_proizvodi[i];
 						  if(!(proizvod.kategorija in myController.kategorijeProizvoda)){
-							myController.listaKategorija.push(proizvod.kategorija);
-							myController.kategorijeProizvoda[proizvod.kategorija] = [proizvod];
+										myController.listaKategorija.push(proizvod.kategorija);
+										myController.kategorijeProizvoda[proizvod.kategorija] = [proizvod];
 						  }else{
-							myController.kategorijeProizvoda[proizvod.kategorija].push(proizvod);
+										myController.kategorijeProizvoda[proizvod.kategorija].push(proizvod);
 						  }
 						  if(proizvod.p_name.toLowerCase().indexOf(myController.searchText.toLowerCase())!=-1){
-							lista.push(proizvod);
+									lista.push(proizvod);
 						  }
 						}
 						myController.totalItems = lista.length;
@@ -56,6 +46,92 @@ var app = angular.module("myModule", ['ui.bootstrap']);
 						  vm.message = 'error';
 					  });
 				};
+
+
+				//===== PRICE SORT ======//
+				//======================//
+
+				myController.p_price =-1;
+				myController.filterCena = function (el) {
+					myController.p_grade = -1;
+					myController.p_price = el;
+					myController.proizvod = null;
+					if (myController.kategorija != null) {
+						myController.proizvodi = myController.kategorijeProizvoda[myController.kategorija];
+					} else {
+						myController.proizvodi = myController.svi_proizvodi;
+					}
+					if (myController.p_price != -1) {
+						var lista = myController.proizvodi;
+						var rez = [];
+						for (var i in lista) {
+							if (myController.p_price == 1 && lista[i].p_price > 0 && lista[i].p_price <= 40) {
+								rez.push(lista[i]);
+							}
+							if (myController.p_price == 2 && lista[i].p_price > 40) {
+								rez.push(lista[i]);
+							}
+						}
+						myController.proizvodi = rez;
+					}
+				}
+
+
+				//===== COUNT SORT =====//
+				//=====================//
+
+				myController.kolicina = -1;
+				myController.filterKolicine = function (el) {
+					console.log("Hello!");
+					myController.p_grade = -1;
+					myController.p_price = -1;
+					myController.kolicina = el;
+					myController.proizvod = null;
+					if (myController.kategorija != null) {
+						myController.proizvodi = myController.kategorijeProizvoda[myController.kategorija];
+					} else {
+						myController.proizvodi = myController.svi_proizvodi;
+					}
+					if (myController.kolicina != -1) {
+						var lista = myController.proizvodi;
+						var rez = [];
+						for (var i in lista) {
+							if (myController.kolicina == 1 && lista[i].kolicina > 0 && lista[i].kolicina <= 25) {
+								rez.push(lista[i]);
+							}
+							if (myController.kolicina == 2 && lista[i].kolicina > 25) {
+								rez.push(lista[i]);
+							}
+						}
+						myController.proizvodi = rez;
+					}
+				}
+				
+
+				//======== GRADE SORT ========//
+				//===========================//
+
+				myController.p_grade = -1;
+				myController.filterOcene = function (el) {
+					myController.p_grade = el;
+					myController.proizvod = null;
+					if (myController.kategorija != null) {
+						myController.proizvodi = myController.kategorijeProizvoda[myController.kategorija];
+					} else {
+						myController.proizvodi = myController.svi_proizvodi;
+					}
+					if (myController.p_grade != -1) {
+						var lista = myController.proizvodi;
+						var rez = [];
+						for (var i in lista) {
+							if (myController.p_grade == lista[i].p_grade) {
+								rez.push(lista[i]);
+							}
+						}
+						myController.proizvodi = rez;
+						console.log(rez)
+					}
+				}
 
 				myController.listaKategorija = [];
 				myController.kategorijeProizvoda = {};
@@ -69,6 +145,8 @@ var app = angular.module("myModule", ['ui.bootstrap']);
 		        $scope.alerts.splice(index, 1);
 		    };
 
+				//======== ADD TO CART =========//
+				//=============================//
 
 				$scope.add_cart = function(proizvod){
 					if(proizvod){
@@ -85,6 +163,9 @@ var app = angular.module("myModule", ['ui.bootstrap']);
 					}
 				}
 
+				//===== REMOVE FROM CART =====//
+				//===========================//
+
 				$scope.remove_cart = function(cart){
 					if(cart){
 						$scope.carts.splice($scope.carts.indexOf(cart), 1);
@@ -93,17 +174,14 @@ var app = angular.module("myModule", ['ui.bootstrap']);
 				}
 
 				myController.currentPage = 1;
-				myController.itemsPerPage = 10;
+				myController.itemsPerPage = 20;
 				myController.totalItems = 10;
 				myController.maxSize = 5;
-				myController.korisnikPrijavljen = false;
+				myController.korisnikPrijavljenUser = false;
+				myController.korisnikPrijavljenAdmin = false;
 
-				myController.filterCena = function(el){
-					console.log("filter_cena");
-				}
-
-				//=========LOGIN============//
-				//=========================//
+				//========= LOGIN ===========//
+				//==========================//
 
 				myController.login = function () {
 						var modalInstance = $uibModal.open({
@@ -117,13 +195,18 @@ var app = angular.module("myModule", ['ui.bootstrap']);
 		            $ctrl.password = '';
 		            $ctrl.poruka = '';
 
-
 		            $ctrl.login = function(){
-		                if($ctrl.password == '123'){
+		                if($ctrl.password == '123' && $ctrl.username == 'korisnik'){
 		                    $uibModalInstance.close($ctrl.username);
-		                    parent.korisnikPrijavljen = true;
-							$window.localStorage.setItem('user', $ctrl.username);
-							return vm.message = "ulogovani ste kao: " + $ctrl.username;
+		                    parent.korisnikPrijavljenUser = true;
+												$window.localStorage.setItem('user', $ctrl.username);
+												return vm.message = "ulogovani ste kao: " + $ctrl.username;
+		                }
+										if($ctrl.password == '456' && $ctrl.username == 'admin'){
+		                    $uibModalInstance.close($ctrl.username);
+		                    parent.korisnikPrijavljenAdmin = true;
+												$window.localStorage.setItem('user', $ctrl.username);
+												return vm.message = "ulogovani ste kao: " + $ctrl.username;
 		                }else{
 		                    $ctrl.poruka = 'Pogresna lozinka';
 		                }
@@ -151,23 +234,39 @@ var app = angular.module("myModule", ['ui.bootstrap']);
 		      }, function () {
 		        console.log('modal-component dismissed at: ' + new Date());
 		      });
-		    };
+				};
+				
 
-			myController.logout = function(){
+				//==== LOGOUT ====//
+				//===============//
+
+				myController.logout = function(){
 		      //$ctrl.password = "";
-			  vm.message='';
-		      parent.korisnikPrijavljen = false;
+			  	vm.message='';
+		      myController.korisnikPrijavljenUser = false;
+			    myController.korisnikPrijavljenAdmin = false;
 		      return vm.message = "Izlogovani ste. Hvala sto ste koristili aplikaciju.";
 		      $window.localStorage.removeItem('user');
 		    }
 
+
+
+			//===== CHECKOUT =======//
+			//=====================//
+
 			myController.checkout = function(){
 				console.log($scope.carts);
-				if($scope.carts.length>0){
-					myController.login();
-					vm.message='';
+				if (myController.korisnikPrijavljenAdmin == true || myController.korisnikPrijavljenUser == true){
+					if ($scope.carts.length > 0){
+						return vm.message = "proizvod je ubacen u korpu"
+					}else{
+						return vm.message = "Korpa je prazna unesite proizvod"
+					}
+					//parent.korisnikPrijavljenUser = false;
+					//parent.korisnikPrijavljenAdmin = false;
 				}else{
-					return vm.message="Korpa je prazna. Unesite proizvod";
+					myController.login();
+					return vm.message="Morate se ulogovati da nastavite kupovinu";
 				}
 
 			}
